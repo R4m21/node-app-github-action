@@ -15,7 +15,7 @@ services:
     image: nginx:latest
     container_name: nginx_load_balancer
     ports:
-      - "4000:80" # Bahar ka port 4000 ab Nginx ke port 80 se jud gaya hai
+      - "3000:80" # Bahar ka port 3000 ab Nginx ke port 80 se jud gaya hai
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro # Aapki config file ko Nginx ke andar link kiya
     depends_on:
