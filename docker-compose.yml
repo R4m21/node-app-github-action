@@ -5,7 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: my-node-app
+    # container_name ko hata dena hai, kyunki multiple containers ka ek naam nahi ho sakta
+    # container_name: my-node-app
     restart: unless-stopped
     ports: 
-     - "3000:3000"
+     - "3000" # Sirf container port likha, host port Docker khud manage karega
