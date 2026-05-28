@@ -3,8 +3,8 @@ import express from "express";
 const app = express();
 
 app.get("/", (req, res) => {
-  console.log(`hello world from github action maniram : ${process.pid}`);
-  res.send(`hello world from github action maniram : ${process.pid}`);
+  console.log(`hello world from github action : ${process.pid}`);
+  res.send(`hello world from github action : ${process.pid}`);
 });
 
 app.get("/crash", (req, res) => {
