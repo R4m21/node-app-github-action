@@ -12,7 +12,7 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v4
       - name: deploy code
-        uses: appleboy/ssh-action@1.0.3
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USERNAME }}
