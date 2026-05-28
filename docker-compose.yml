@@ -1,12 +1,22 @@
-version: 1.0.0
-
 services:
   node-app:
     build:
       context: .
       dockerfile: Dockerfile
-    # container_name ko hata dena hai, kyunki multiple containers ka ek naam nahi ho sakta
+    # container_name hata diya taaki scale karte waqt naam ka conflict na ho
     # container_name: my-node-app
     restart: unless-stopped
-    ports: 
-     - "3000" # Sirf container port likha, host port Docker khud manage karega
+    # ports: 
+    #  - "3000" # Sirf container port likha, host port Docker khud manage karega
+    expose:
+      - "3000" # Yeh port sirf container ke andar open rahega, bahar nahi
+
+  nginx-lb:
+    image: nginx:latest
+    container_name: nginx_load_balancer
+    ports:
+      - "4000:80" # Bahar ka port 4000 ab Nginx ke port 80 se jud gaya hai
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro # Aapki config file ko Nginx ke andar link kiya
+    depends_on:
+      - node-app
